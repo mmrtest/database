@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <link rel="stylesheet" href="/database/public/css/TableEdit.css">
+</head>
+ 
+<body>
+    <br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 ">                
+               
+            </div>
+               
+            <div class="col-8 bg-light">
+            <form action="/database/artist/addsub" method="post" enctype="multipart/form-data">
+                <label for="firstname">Firstname</label><br>
+                <input type="text" name="firstname" id="firstname"placeholder="enter.."><br>
+                <label for="midname">Midname</label><br>
+                <input type="text" name="midname" id="midname"placeholder="enter.."><br>
+                <label for="lastname">Firstname</label><br>
+                <input type="text" name="lastname" id="lastname"placeholder="enter.."><br>
+                <label for="mainstyle">Mainstyle</label><br>
+                <input type="text" name="mainstyle" id="mainstyle"placeholder="enter.."><br>
+
+                <label for="country">Country</label><br>
+                <select name="country" id="country">
+                <?php 
+                $count = Country::find();
+                for($i=1;$i<=count($count);$i++)
+                {
+                    $art = Country::findFirst([
+                        'country_id = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+                ?>
+                    <option value="<?php echo $art->country_id;?>"><?php echo $art->country_id." - ".$art->country_title;?></option> 
+                <?php
+                }
+                ?>                             
+                </select>
+                
+                <label for="epoch">Epoch</label><br>
+                <select name="epoch" id="epoch">
+                <?php 
+                $count2 = Epoch::find();
+                for($i=1;$i<=count($count2);$i++)
+                {
+                    $art = Epoch::findFirst([
+                        'epoch_id = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+                ?>
+                    <option value="<?php echo $art->epoch_id;?>"><?php echo $art->epoch_id." - ".$art->epoch_title;?></option>   
+                <?php
+                }
+                ?>                             
+                </select>
+                
+                <label for="des">Description</label><br>
+                <textarea name="des" id="des" rows="10" cols="100" placeholder="Enter..."></textarea><br>
+                <label for="dateborn">Acquired_Date</label>
+                <input type="date" name="dateborn" id="dateborn">
+                <label for="datedie">Return_Date</label>
+                <input type="date" name="datedie" id="datedie"><br>
+
+                <br>
+                <h3>Select image to upload:</h3>
+                <input type="file" name="fileToUpload" id="fileToUpload">  
+
+                <input type="submit" value="Submit">
+
+            </form>
+                <button class="button button1" onclick="window.location.href='/database/table'">Back</button>
+            </div>
+            
+
+            </div>
+        </div>
+ 
+</body>
+ 
+</html>

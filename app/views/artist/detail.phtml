@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/database/public/css/TableDetail.css">
+</head>
+<body>
+    <br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 ">                
+                <div class="card border-dark mb-3" style="width: 370px; height: 500px;">
+                    <img class="card-img-top" src="../../public/img/artist/<?php echo $image?>" alt="Card image cap" style="width: 365px; height: 500px;">
+                    <div class="card-body">
+                      <h5 class="card-title"><center><?php echo $artist ;?></center></h5>
+
+                    </div>
+                  </div>
+            </div>                
+
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-6"></div>
+                            <div class="col-6">
+                                <div class="card border-dark mb-3" style="max-width: 20rem;">
+                                    <div class="card-header "><center>MAIN_STYLE</div>
+                                    <div class="card-body text-dark">
+                                        <p class="card-text"><?php echo $main_style;?></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3">
+                        <div class="card border-dark mb-1" style="max-width: 20rem;">
+                            <div class="card-header "><center>DATE_BORN</center></div>
+                            <div class="card-body text-dark">
+                                <p class="card-text"><?php echo $date_born;?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card border-dark mb-1" style="max-width: 20rem;">
+                            <div class="card-header "><center>DATE_DIE</center></div>
+                            <div class="card-body text-dark">
+                                <p class="card-text"><?php echo $date_die;?></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-3">
+                        <div class="card border-dark mb-1" style="max-width: 20rem;">
+                            <div class="card-header "><center>COUNTRY</center></div>
+                            <div class="card-body text-dark">
+                                <p class="card-text"><?php echo $country;?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card border-dark mb-2" style="max-width: 20rem;">
+                            <div class="card-header "><center>EPOCH</center></div>
+                            <div class="card-body text-dark">
+                                <p class="card-text"><?php echo $epoch;?></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>               
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card border-dark mb-1" style="height: 15rem;">
+                            <div class="card-header "><center>Descripsion</center></div>
+                            <div class="card-body text-dark">
+                                <p class="card-text"><?php echo $description;?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="button button1" onclick="window.location.href='/database/table'">Back</button>
+            </div>
+        </div>
+
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <link rel="stylesheet" href="/database/public/css/TableDetail.css">
+</head>
+ 
+<body>
+    <br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 ">                
+               <br> <img class="img-fluid" src="../../public/img/art_object/<?php echo $image?>" alt="Chania">
+            </div>
+               
+ 
+            <div class="col-8 bg-light">
+                <div class="row">
+                    <div class="col-8 bg-light">
+                        <div class="row">
+                            <div class="col-6 bg-light">
+                                <div class="card border-dark mb-3" style="max-width: 20rem;">
+                                    <div class="card-header"> <center>Artname</div>
+                                    <div class="card-body text-dark">
+                                        <p class="card-text"><?php echo $name ;?></p>
+                                    </div>
+                                </div>
+ 
+                            </div>
+                            <div class="col-6 bg-light">
+                                <div class="card border-dark mb-3" style="max-width: 20rem;">
+                                    <div class="card-header "><center>Artist</div>
+                                    <div class="card-body text-dark">
+                                        <p class="card-text"><?php echo $artist ;?></p>
+                                    </div>
+                                </div>
+ 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+                <div class="row">
+                    <div class="col-3 bg-light">
+                        <div class="card border-dark mb-1" style="max-width: 12rem;">
+                            <div class="card-header "><center>ID_ON</center></div>
+                            <div class="card-body text-dark">
+                                <p class="card-text"><?php echo $id_no ;?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 bg-light">
+                        <div class="card border-dark mb-1" style="max-width: 12rem;">
+                            <div class="card-header "><center>Country</center></div>
+                            <div class="card-body text-dark">
+                                <p class="card-text"><?php echo $country ;?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 bg-light">
+                        <div class="card border-dark mb-3" style="max-width: 12rem;">
+                            <div class="card-header "><center>Epoch</center></div>
+                            <div class="card-body text-dark">
+                                <p class="card-text"><?php echo $epoch ;?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 bg-light">
+                        <div class="card border-dark mb-2" style="max-width: 12rem;">
+                            <div class="card-header "><center>Year</center></div>
+                            <div class="card-body text-dark">
+                                <p class="card-text"><?php echo $year ;?></p>
+                            </div>
+                        </div>
+ 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 bg-light">
+                        <div class="card border-dark mb-1" style="max-width: rem;">
+                            <div class="card-header "><center>Type</center></div>
+                            <div class="card-body text-dark">
+                                <?php
+                                if($type == "Painting")
+                                {
+                                ?>
+                                <p class="card-text">Type : <?php echo $type ;?></p>
+                                <p class="card-text">Paint_Type : <?php echo $typeP ;?></p>
+                                <p class="card-text">Draw_On : <?php echo $draw ;?></p>
+                                <p class="card-text">Style : <?php echo $styleP ;?></p>
+                                <?php
+                                }
+                                if($type == "Sculpture")
+                                {
+                                ?>
+                                <p class="card-text">Type : <?php echo $type ;?></p>
+                                <p class="card-text">Material : <?php echo $materialSc ;?></p>
+                                <p class="card-text">Height : <?php echo $heightSc ;?></p>
+                                <p class="card-text">Weight : <?php echo $weightSc ;?></p>
+                                <p class="card-text">Style : <?php echo $styleSc ;?></p>
+                                <?php
+                                }
+                                if($type == "Statue")
+                                {
+                                ?>
+                                <p class="card-text">Type : <?php echo $type ;?></p>
+                                <p class="card-text">Material : <?php echo $materialSt ;?></p>
+                                <p class="card-text">Height : <?php echo $heightSt ;?></p>
+                                <p class="card-text">Weight : <?php echo $weightSt ;?></p>
+                                <p class="card-text">Style : <?php echo $styleSt ;?></p>
+                                <?php
+                                }
+                                if($type == "Other")
+                                {
+                                ?>
+                                <p class="card-text"><?php echo $type ;?> Type</p>
+                                <p class="card-text">Type : <?php echo $typeO ;?></p>
+                                <p class="card-text">Style : <?php echo $styleO ;?></p>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-12 bg-light">
+                        <div class="card border-dark mb-1" style="max-width: rem;">
+                            <div class="card-header "><center><?php echo $bo ;?></center></div>
+                            <div class="card-body text-dark">
+                                <?php
+                                if($bo == "Borrow")
+                                {
+                                ?>
+                                <p class="card-text">Borrow From : <?php echo $from ;?></p>
+                                <p class="card-text">Acquired Date : <?php echo $acdate ;?></p>
+                                <p class="card-text">Return Date : <?php echo $redate ;?></p>
+                                <p class="card-text">Collection_id : <?php echo $coll ;?></p>
+                                <?php
+                                }
+                                if($bo == "PermanentCollections")
+                                {
+                                ?>
+                                <p class="card-text">Status : <?php echo $status ;?></p>
+                                <p class="card-text">Acquired Date : <?php echo $date ;?></p>
+                                <p class="card-text">Cost : <?php echo $cost ;?></p>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="col-3 bg-light">
+                        <div class="card border-dark mb-1" style="max-width: 10rem;">
+                            <div class="card-header ">Header</div>
+                            <div class="card-body text-dark">
+                                <p class="card-text">Some</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 bg-light">
+                        <div class="card border-dark mb-3" style="max-width: 10rem;">
+                            <div class="card-header ">Header</div>
+                            <div class="card-body text-dark">
+                                <p class="card-text">Some</p>
+                            </div>
+                        </div>
+                    </div>-->
+                </div><br>
+                <div class="row">
+                    <div class="col-12 bg-light">
+                        <div class="card border-dark mb-1" style="max-width: rem;">
+                            <div class="card-header "><center>Descripsion</center></div>
+                            <div class="card-body text-dark">
+                                <p class="card-text"><?php echo $des ;?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="button button1" onclick="window.location.href='/database/table'">Back</button>
+            </div>
+        </div>
+ 
+</body>
+ 
+</html>

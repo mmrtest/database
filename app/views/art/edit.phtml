@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <link rel="stylesheet" href="/database/public/css/TableEdit.css">
+</head>
+ 
+<body>
+    <br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 ">                
+               <br> <img class="img-fluid" src="../../public/img/art_object/<?php echo $image?>" alt="Chania">
+            </div>
+               
+            <div class="col-8 bg-light">
+            <form action="../submit/<?php echo $id_no?>/<?php echo $type?>/<?php echo $bo?>" method="post" enctype="multipart/form-data">
+                <label for="name">Artname</label><br>
+                <input type="text" name="name" id="name" value="<?php echo $name;?>"><br>
+
+                <label for="artist">Artist</label><br>
+                <select name="artist" id="artist">
+                <?php 
+                $count = Artist::find();
+                for($i=1;$i<=count($count);$i++)
+                {
+                    $art = Artist::findFirst([
+                        'artist_id = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+                ?>
+                    <option value="<?php echo $art->artist_id;?>" <?php if($artist_id == $art->artist_id){echo "selected";}?>><?php echo $art->artist_id." - ".$art->firstname." ".$art->midname." " .$art->lastname;?></option> 
+                <?php
+                }
+                ?>                             
+                </select>
+                
+                <label for="country">Country</label><br>
+                <select name="country" id="country">
+                <?php 
+                $count = Country::find();
+                for($i=1;$i<=count($count);$i++)
+                {
+                    $art = Country::findFirst([
+                        'country_id = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+                ?>
+                    <option value="<?php echo $art->country_id;?>" <?php if($country == $art->country_title){echo "selected";}?>><?php echo $art->country_id." - ".$art->country_title;?></option> 
+                <?php
+                }
+                ?>                             
+                </select>
+                
+                <label for="epoch">Epoch</label><br>
+                <select name="epoch" id="epoch">
+                <?php 
+                $count2 = Epoch::find();
+                for($i=1;$i<=count($count2);$i++)
+                {
+                    $art = Epoch::findFirst([
+                        'epoch_id = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+                ?>
+                    <option value="<?php echo $art->epoch_id;?>" <?php if($epoch == $art->epoch_title){echo "selected";}?>><?php echo $art->epoch_id." - ".$art->epoch_title;?></option>   
+                <?php
+                }
+                ?>                             
+                </select>
+                
+                <label for="des">Description</label><br>
+                <textarea name="des" id="des" rows="10" cols="100"><?php echo $des;?></textarea><br>
+
+                <?php if($type == 1)
+                {
+                ?>
+                <div>
+                <br>
+                <h3>Painting</h3>
+                <label for="typeP">Paint_Type</label><br>
+                <input type="text" name="typeP" id="typeP" value="<?php echo $typeP;?>"><br>
+                <label for="draw">Draw_On</label><br>
+                <input type="text" name="draw" id="draw" value="<?php echo $draw;?>"><br>
+                <label for="styleP">Style</label><br>
+                <input type="text" name="styleP" id="styleP" value="<?php echo $styleP;?>"><br>
+                </div>
+
+                <?php 
+                }
+                if($type == 2)
+                {
+                ?>
+
+                <div>
+                <br>
+                <h3>Sculpture</h3>
+                <label for="materialSc">Material</label><br>
+                <input type="text" name="materialSc" id="materialSc" value="<?php echo $materialSc;?>"><br>
+                <label for="heightSc">Height</label><br>
+                <input type="text" name="heightSc" id="heightSc" value="<?php echo $heightSc;?>"><br>
+                <label for="weightSc">Weight</label><br>
+                <input type="text" name="weightSc" id="weightSc" value="<?php echo $weightSc;?>"><br>
+                <label for="styleSc">Style</label><br>
+                <input type="text" name="styleSc" id="styleSc" value="<?php echo $styleSc;?>"><br>
+                </div>
+
+                <?php 
+                }
+                if($type == 3)
+                {
+                ?>
+
+                <div>
+                <br>
+                <h3>Statue</h3>
+                <label for="materialSt">Material</label><br>
+                <input type="text" name="materialSt" id="materialSt" value="<?php echo $materialSt;?>"><br>
+                <label for="heightSt">Height</label><br>
+                <input type="text" name="heightSt" id="heightSt" value="<?php echo $heightSt;?>"><br>
+                <label for="weightSt">Weight</label><br>
+                <input type="text" name="weightSt" id="weightSt" value="<?php echo $weightSt;?>"><br>
+                <label for="styleSt">Style</label><br>
+                <input type="text" name="styleSt" id="styleSt" value="<?php echo $styleSt;?>"><br>
+                </div>
+
+                <?php 
+                }
+                if($type == 4)
+                {
+                ?>
+
+                <div>
+                <br>
+                <h3>Other</h3>
+                <label for="typeO">Type</label><br>
+                <input type="text" name="typeO" id="typeO" value="<?php echo $typeO;?>"><br>
+                <label for="styleSt">Style</label><br>
+                <input type="text" name="styleO" id="styleO" value="<?php echo $styleO;?>"><br>
+                </div>
+
+                <?php 
+                }
+                if($bo == 1)
+                {
+                ?>
+                
+                <div>
+                <br>
+                <h3>Borrow</h3>
+                <label for="from">From</label><br>
+                <input type="text" name="from" id="from" value="<?php echo $from;?>"><br>
+                <label for="acdate">Acquired_Date</label>
+                <input type="date" name="acdate" id="acdate" value="<?php echo $acdate;?>">
+                <label for="redate">Return_Date</label>
+                <input type="date" name="redate" id="redate" value="<?php echo $redate;?>"><br>
+                <select name="coll" id="coll">
+                    <option value="0"> None </option> 
+                <?php 
+                $count = Collections::find();
+                for($i=1;$i<=count($count);$i++)
+                {
+                    $art = Collections::findFirst([
+                        'Collections_id = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+                ?>
+                    <option value="<?php echo $art->Collections_id;?>" <?php if($coll == $art->Collections_id){echo "selected";}?>><?php echo $art->Collections_id." - ".$art->name;?></option> 
+                <?php
+                }
+                ?>                             
+                </select>
+                </div>
+                
+                <?php 
+                }
+                if($bo == 2)
+                {
+                ?>
+
+                <div>
+                <br>
+                <h3>Permanant</h3>
+                <label for="status">Status</label><br>
+                <input type="text" name="status" id="status" value="<?php echo $status;?>"><br>
+                <label for="cost">Cost</label><br>
+                <input type="text" name="cost" id="cost" value="<?php echo $cost;?>"><br>
+                <label for="date">Acquired_Date</label>
+                <input type="date" name="date" id="date" value="<?php echo $date;?>"><br>
+                </div>
+
+                <?php 
+                }
+                ?>
+
+
+
+
+
+                <br>
+                <h3>Select image to upload:</h3>
+                <input type="file" name="fileToUpload" id="fileToUpload">   
+
+                <input type="submit" value="Submit">
+                </form>
+                <button class="button button1" onclick="window.location.href='/database/table'">Back</button>
+            </div>
+            
+
+            </div>
+        </div>
+ 
+</body>
+ 
+</html>

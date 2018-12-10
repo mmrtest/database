@@ -1,0 +1,17 @@
+li
+{
+    background-color: rgb(88, 93, 97)
+   
+}
+a{
+    color: rgb(216, 209, 199);
+}
+p{
+    position: relative;
+    top: 10px;
+}
+s{
+    position: relative;
+    right: -120px;
+    bottom: -10px;
+}

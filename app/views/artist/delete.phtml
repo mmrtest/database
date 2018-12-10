@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/database/public/css/Table.css">
+    </head>
+ 
+    <body id="page-top" >
+ 
+    <br><br><br>
+<h2>All in Table will be Delete Too</h2>
+<br>
+<table id="t01">
+      <tr>
+        <th>ArtObject_id</th>
+        <th>Name</th>
+      </tr>
+      <tr>
+        <?php 
+            $count = ArtObjects::find([
+                'artist_id = ?0',
+                'bind' => [
+                    0 => $id,
+                ]
+            ]);
+            for($i=0;$i<count($count);$i++)
+           {         
+        ?>
+        <td><?php echo $count[$i]->id_no ; ?></td>
+        <td><?php echo $count[$i]->title ; ?></td>
+        
+      </tr>
+      <?php }?>
+      
+    </table>
+    <button class="button button1" onclick="window.location.href='/database/table'">Back</button>
+    <button class="button button1" onclick="window.location.href='/database/artist/confirm/<?php echo $id;?>'">Delete</button>
+</body>
+ 
+
+</html>
+
+<!--$checkT = 0;
+                $checkB = 0;
+                    $typ = Painting::findFirst([
+                        'Art_Objects_id_no = ?0',
+                        'bind' => [
+                            0 => $count[$i]->id_no,
+                        ]
+                    ]);
+                    if ($artist !== false) {
+                        $checkT = 1;
+                    }
+                    if($checkT == 0){
+                        $typ = Sculpture::findFirst([
+                            'Art_Objects_id_no = ?0',
+                            'bind' => [
+                                0 => $count[$i]->id_no,
+                            ]
+                        ]);
+                        if ($artist !== false) {
+                            $checkT = 1;
+                        }
+                    }-->

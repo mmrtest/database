@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+ 
+    <body id="page-top" >
+ 
+
+</body>
+ 
+<br><br><br>
+<h2>WELCOME TO OURS MUSEUM</h2>
+<h1>Register</h1>
+<br>
+<?php echo $this->tag->form("signup/register"); ?>
+ 
+    <p>
+        <label for="username">Username</label><br>
+        <?php echo $this->tag->textField("username"); ?>
+    </p>
+ 
+    <p>
+        <label for="email">E-Mail</label><br>
+        <?php echo $this->tag->textField("email"); ?>
+    </p>
+ 
+    <p>
+        <label for="password">Password</label><br>
+        <?php echo $this->tag->textField("password"); ?>
+    </p>
+ 
+    <p>
+        <label for="roleid">Roleid</label><br>
+        <?php echo $this->tag->textField("roleid"); ?>
+    </p>
+ 
+    <p>
+        <?php echo $this->tag->submitButton("Register"); ?>
+    </p>
+ 
+</form>

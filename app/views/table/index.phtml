@@ -1,0 +1,113 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/database/public/css/Table.css">
+</head>
+
+<body>
+ 
+    <br><br><br>
+<h2>Table using this form</h2>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'table1')">Art Object</button>
+  <button class="tablinks" onclick="openCity(event, 'table2')">Artist</button>
+  <button class="tablinks" onclick="openCity(event, 'table3')">Exhibition</button>
+</div>
+
+<div id="table1" class="tabcontent" style="display: none;">
+    <button class="button button1" onclick="window.location.href='/database/art/choose'">ADD</button>
+    <table id="t01">
+      <tr>
+        <th>Id_no</th>
+        <th>Year</th> 
+        <th>Name</th>
+        <th>Detail</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <tr>
+        <?php 
+            $count = ArtObjects::find();
+            $num = count($count);
+            for($i=1;$i<=$num;$i++)
+           {
+            $art = ArtObjects::findFirst([
+                        'id_no = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+            if ($art === false) {$num++;continue;}
+                
+        ?>
+        <td><?php echo $art->id_no ; ?></td>
+        <td><?php echo $art->year ; ?></td> 
+        <td><?php echo $art->title ; ?></td>
+        <td><button class="button button1" onclick="window.location.href='/database/art/detail/<?php echo $i;?>'">More</button></td>
+        <td><button class="button button1" onclick="window.location.href='/database/art/edit/<?php echo $i;?>'">Edit</button></td>
+        <td><button class="button button1" onclick="window.location.href='/database/art/delete/<?php echo $i;?>'">Delete</button></td>
+      </tr>
+      <?php }?>
+    </table>
+</div>
+
+<div id="table2" class="tabcontent" style="display: none;">
+<button class="button button1" onclick="window.location.href='/database/artist/add'">ADD</button>
+<table id="t01">
+      <tr>
+        <th>Id_no</th>
+        <th>Name</th> 
+        <th>Detail</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <tr>
+        <?php 
+            $count = Artist::find();
+            $num = count($count);
+            for($i=1;$i<=$num;$i++)
+           {
+            $art = Artist::findFirst([
+                        'artist_id = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+            if ($art === false) {$num++;continue;}
+        ?>
+        <td><?php echo $art->artist_id ; ?></td>
+        <td><?php echo $art->firstname." ".$art->midname." " .$art->lastname ; ?></td>
+        <td><button class="button button1" onclick="window.location.href='/database/artist/detail/<?php echo $i;?>'">More</button></td>
+        <td><button class="button button2" onclick="window.location.href='/database/artist/edit/<?php echo $i;?>'">Edit</button></td>
+        <td><button class="button button1" onclick="window.location.href='/database/artist/delete/<?php echo $i;?>'">Delete</button></td>
+      </tr>
+      <?php }?>
+    </table>
+</div>
+
+<div id="table3" class="tabcontent" style="display: none;">
+  <h3>table3</h3>
+  <p>London is the capital city of England.</p>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+
+</body>
+</html>
