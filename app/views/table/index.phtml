@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="/database/public/css/Table.css">
+    <link rel="stylesheet" href="/database16/public/css/Table.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
 </div>
 
 <div id="table1" class="tabcontent" style="display: none;">
-    <button class="button button1" onclick="window.location.href='/database/art/choose'">ADD</button>
+    <button class="button button1" onclick="window.location.href='/database16/art/choose'">ADD</button>
     <table id="t01">
       <tr>
         <th>Id_no</th>
@@ -46,16 +46,16 @@
         <td><?php echo $art->id_no ; ?></td>
         <td><?php echo $art->year ; ?></td> 
         <td><?php echo $art->title ; ?></td>
-        <td><button class="button button1" onclick="window.location.href='/database/art/detail/<?php echo $i;?>'">More</button></td>
-        <td><button class="button button1" onclick="window.location.href='/database/art/edit/<?php echo $i;?>'">Edit</button></td>
-        <td><button class="button button1" onclick="window.location.href='/database/art/delete/<?php echo $i;?>'">Delete</button></td>
+        <td><button class="button button1" onclick="window.location.href='/database16/art/detail/<?php echo $i;?>'">More</button></td>
+        <td><button class="button button1" onclick="window.location.href='/database16/art/edit/<?php echo $i;?>'">Edit</button></td>
+        <td><button class="button button1" onclick="window.location.href='/database16/art/delete/<?php echo $i;?>'">Delete</button></td>
       </tr>
       <?php }?>
     </table>
 </div>
 
 <div id="table2" class="tabcontent" style="display: none;">
-<button class="button button1" onclick="window.location.href='/database/artist/add'">ADD</button>
+<button class="button button1" onclick="window.location.href='/database16/artist/add'">ADD</button>
 <table id="t01">
       <tr>
         <th>Id_no</th>
@@ -80,9 +80,9 @@
         ?>
         <td><?php echo $art->artist_id ; ?></td>
         <td><?php echo $art->firstname." ".$art->midname." " .$art->lastname ; ?></td>
-        <td><button class="button button1" onclick="window.location.href='/database/artist/detail/<?php echo $i;?>'">More</button></td>
-        <td><button class="button button2" onclick="window.location.href='/database/artist/edit/<?php echo $i;?>'">Edit</button></td>
-        <td><button class="button button1" onclick="window.location.href='/database/artist/delete/<?php echo $i;?>'">Delete</button></td>
+        <td><button class="button button1" onclick="window.location.href='/database16/artist/detail/<?php echo $i;?>'">More</button></td>
+        <td><button class="button button2" onclick="window.location.href='/database16/artist/edit/<?php echo $i;?>'">Edit</button></td>
+        <td><button class="button button1" onclick="window.location.href='/database16/artist/delete/<?php echo $i;?>'">Delete</button></td>
       </tr>
       <?php }?>
     </table>
