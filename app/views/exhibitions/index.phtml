@@ -26,6 +26,10 @@
 
 </head>
 
+<?php
+  $count = Exhibitions::find();
+  $num = count($count);
+  ?>
 
 <body>
     <img src="public\img\exhibitions\glyphicons-halflings.png" class="img-fluid mx-auto d-block" alt="Responsive image" width="1200">
@@ -35,27 +39,33 @@
     </p><br><br>
     <div class="container">       
         <div class="row">
+            <?php
+            $i = 0;
+            while($i<$num)
+            {
+            ?>
             <div class="col-2">
                 <div class="card mb-3">
                     <div class="card-body">
-                    DATE
+                    <?php echo $count[$i]->start_date; ?> - <?php echo $count[$i]->end_date; ?> 
                     </div>
                   </div>
             </div>
             <div class="col-8">
                 <div class="card">
                     <div class="card-body">
-                      Exhibition name
+                    <?php echo $count[$i]->ex_name; ?>
                     </div>
                   </div>
             </div>
             <div class="col-2 ">
                 <div class="card">
                     <div class="card-body">
-                    <a href="/database/exhibitions/detailexhibition/" class="btn ">click</a>
+                    <button class="button button1" onclick="window.location.href='/database/exhibitions/detailexhibition/<?php echo $count[$i]->ex_id;?>'">Click</button>
                     </div>
                   </div>
             </div>
+            <?php $i++;} ?>
         </div>
 </div>
 </body>

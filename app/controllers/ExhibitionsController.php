@@ -9,9 +9,9 @@ class  ExhibitionsController extends Controller
         
         
     }
-    public function detailexhibitionAction()
+    public function detailexhibitionAction($id)
     {
-        
+        $this->view->setVar('id', $id);
         
     }
 
