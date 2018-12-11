@@ -437,9 +437,19 @@ class ArtController extends Controller
     {
         echo "<br><br><br>";
         $count = ArtObjects::find();
-        $num = count($count)+1;
+        $num = count($count);
+        for($i=1;$i<=$num;$i++)
+       {
+        $art = ArtObjects::findFirst([
+                    'id_no = ?0',
+                    'bind' => [
+                        0 => $i,
+                    ]
+                ]);
+        if ($art === false) {$num++;continue;}
+        }
         $art = new ArtObjects();
-        $art->id_no = $num;
+        $art->id_no = $num+1;
         $art->title = $this->request->getPost("name");
         $art->description = $this->request->getPost("des");
         $art->artist_id = $this->request->getPost("artist");
@@ -516,7 +526,7 @@ class ArtController extends Controller
         if($type == 1){
 
             $typ = new Painting();
-            $typ->Art_Objects_id_no = $num;
+            $typ->Art_Objects_id_no = $num+1;
             $typ->paint_type = $this->request->getPost("typeP");
             $typ->draw_on = $this->request->getPost("draw");
             $typ->style = $this->request->getPost("styleP");
@@ -525,7 +535,7 @@ class ArtController extends Controller
         }else if($type == 2){
 
             $typ = new Sculpture();
-            $typ->Art_Objects_id_no = $num;
+            $typ->Art_Objects_id_no = $num+1;
             $typ->material = $this->request->getPost("materialSc");
             $typ->height = $this->request->getPost("heightSc");
             $typ->weight = $this->request->getPost("weightSc");
@@ -535,7 +545,7 @@ class ArtController extends Controller
         }else if($type == 3){
 
             $typ = new Statue();
-            $typ->Art_Objects_id_no = $num;
+            $typ->Art_Objects_id_no = $num+1;
             $typ->material = $this->request->getPost("materialSt");
             $typ->height = $this->request->getPost("heightSt");
             $typ->weight = $this->request->getPost("weightSt");
@@ -544,7 +554,7 @@ class ArtController extends Controller
             
         }else if($type == 4){
             $typ = new Other();
-            $typ->Art_Objects_id_no = $num;
+            $typ->Art_Objects_id_no = $num+1;
             $typ->type = $this->request->getPost("typeO");
             $typ->style = $this->request->getPost("styleO");
             $success = $typ->save(); 
@@ -566,7 +576,7 @@ class ArtController extends Controller
         if($bo == 1){
 
             $bor = new Borrow();
-            $bor->Art_Objects_id_no = $num;
+            $bor->Art_Objects_id_no = $num+1;
             $bor->date = $this->request->getPost("acdate");
             $bor->date_return = $this->request->getPost("redate");
             $bor->form = $this->request->getPost("from");
@@ -580,7 +590,7 @@ class ArtController extends Controller
         }else if($bo == 2){
 
             $bor = new PermanentCollections();
-            $bor->Art_Objects_id_no = $num;
+            $bor->Art_Objects_id_no = $num+1;
             $bor->date_acquired = $this->request->getPost("date");
             $bor->cost = $this->request->getPost("cost");
             $bor->status = $this->request->getPost("status");

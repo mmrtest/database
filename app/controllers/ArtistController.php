@@ -135,9 +135,19 @@ class ArtistController extends Controller
     {
         echo "<br><br><br>";
         $count = Artist::find();
-        $num = count($count)+1;
+        $num = count($count);
+        for($i=1;$i<=$num;$i++)
+       {
+        $art = Artist::findFirst([
+                    'artist_id = ?0',
+                    'bind' => [
+                        0 => $i,
+                    ]
+                ]);
+        if ($art === false) {$num++;continue;}
+        }
         $artist = new Artist();
-        $artist->artist_id = $num;
+        $artist->artist_id = $num+1;
         $artist->firstname = $this->request->getPost("firstname");
         $artist->midname = $this->request->getPost("midname");
         $artist->lastname = $this->request->getPost("lastname");
