@@ -1,0 +1,61 @@
+
+.container li
+{
+    background-color: rgb(88, 93, 97)
+   
+}
+.nav-item a{
+    color: rgb(216, 209, 199);
+}
+.Painting
+{
+    font-family: sans-serif;
+    width: 80%;
+    margin: 0% auto;
+    position:  relative;
+
+}
+
+img{
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+}
+.content{
+    position:absolute;
+    left:800px;
+    top:460px;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    text-transform: uppercase;
+    font-size: 10px;
+    color:  #fff;
+    white-space: nowrap;
+    overflow : hidden;
+}
+.content a{
+    position: relative;
+    
+    font-size: 15px;
+    display: block;
+    background-color:silver;
+    text-align: center;
+    padding:10px;
+    cursor:poingter;
+}
+.overlay
+{
+    opacity: 0;
+}
+.Painting:hover img{
+    opacity: .5;
+}
+.Painting:hover .overlay{
+    opacity: 1;
+}
+body
+{
+    color: rgb(133, 109, 75)
+}
