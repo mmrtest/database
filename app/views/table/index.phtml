@@ -89,8 +89,41 @@
 </div>
 
 <div id="table3" class="tabcontent" style="display: none;">
-  <h3>table3</h3>
-  <p>London is the capital city of England.</p>
+<button class="button button1" onclick="window.location.href='/database/exhibitions/add'">ADD</button>
+<table id="t01">
+      <tr>
+        <th>Ex_Id</th>
+        <th>Name</th> 
+        <th>Detail</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>AddGoer</th>
+        <th>DelGoer</th>
+      </tr>
+      <tr>
+        <?php 
+            $count = Exhibitions::find();
+            $num = count($count);
+            for($i=1;$i<=$num;$i++)
+           {
+            $art = Exhibitions::findFirst([
+                        'ex_id = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+            if ($art === false) {$num++;continue;}
+        ?>
+        <td><?php echo $art->ex_id ; ?></td>
+        <td><?php echo $art->ex_name; ?></td>
+        <td><button class="button button1" onclick="window.location.href='/database/exhibitions/detailexhibition/<?php echo $i;?>'">More</button></td>
+        <td><button class="button button2" onclick="window.location.href='/database/exhibitions/edit/<?php echo $i;?>'">Edit</button></td>
+        <td><button class="button button1" onclick="window.location.href='/database/exhibitions/delete/<?php echo $i;?>'">Delete</button></td>
+        <td><button class="button button2" onclick="window.location.href='/database/exhibitions/addGo/<?php echo $i;?>'">Add</button></td>
+        <td><button class="button button1" onclick="window.location.href='/database/exhibitions/deleteGo/<?php echo $i;?>'">Delete</button></td>
+      </tr>
+      <?php }?>
+    </table>
 </div>
 
 <script>

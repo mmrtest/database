@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap tutorials by Siam HTML</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+</head>
+
+<?php
+
+  
+?>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">            
+            <div class="colum-6">
+                <div class="row">
+                    <div class="colum-8">
+                        <div class="card border-primary mb-3 " style="width: 400px; height: 500px;">
+                            <div class="card-body text-primary">
+                                <h4>
+                                    <center>Primary card title</center>
+                                </h4>
+                                <h6>
+                                    <center>date to end</center>
+                                </h6>
+                                <br>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <br>
+                            </div>
+                            <div class="card-footer border-primary bg-transparent text-primary">
+                                <h6>
+                                    <center>Cerrent Attending Person</center>
+                                </h6>
+                                <h6>
+                                    <center>Limit Attending Person</center>
+                                </h6>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <div class ="colum-4">
+                    <img border="0" alt="W3Schools" src="/database/public/img/Main/paint.jpg" width="650" height="500">
+                    </div>       
+                </div>
+    </div>
+
+    <?php
+  $count = WasShowBy::find("Exhibitions_ex_id = '$id'");
+  $num = count($count);
+  ?>
+
+  <center>
+    <div class="container">
+    <?php
+      $i = 0;
+      //print($count[0]->mater);
+       while($i<$num)
+       {
+    ?>
+      <div class="row">
+        <?php
+        for($j=0;$j<4;$j++)
+        {
+          if($i>=$num){break;}
+          $art  = ArtObjects::findFirst([
+            'id_no = ?0',
+            'bind' => [
+                0 => $count[$i]->Art_Objects_id_no,
+            ]
+          ]);
+
+          $i++; 
+        ?>
+        <div class="card-deck">
+          <div class="card mb-3">
+            <img class="card-img-mid" src="\database\public\img\art_object\<?php if($art->image == NULL){echo "avatar.png";}else{echo $art->image;} ?>" alt="Card image cap" style="max-height: 18rem">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $art->title; ?></h5>
+            </div>
+          </div>
+        </div>
+        <?php } ?>
+      </div>
+      <?php } ?>
+    </div>
+  </center>
+
+  
+</body>
