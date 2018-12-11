@@ -15,5 +15,11 @@ class  ExhibitionsController extends Controller
         
     }
 
+    public function addAction()
+    {
+        
+        
+    }
+
 
 }
