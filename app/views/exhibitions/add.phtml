@@ -25,9 +25,28 @@
                 <input type="date" name="dateend" id="dateend"><br>
                 <br>
                 <h3>Select image to upload:</h3>
-                <input type="file" name="fileToUpload" id="fileToUpload">  
+                <input type="file" name="fileToUpload" id="fileToUpload"> 
 
-                <input type="submit" value="Submit">
+                <select multiple="multiple" name="formats[]">
+                <?php
+                $count = ArtObjects::find();
+                for($i=1;$i<=count($count);$i++)
+                {
+                    $art = ArtObjects::findFirst([
+                        'id_no = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+                ?>
+                    <option value="<?php echo $art->id_no;?>"><?php echo $art->id_no." - ".$art->title;?></option> 
+                <?php
+                }
+                ?>
+                </select> 
+
+                <input type="submit" value="Submit"><br>
+                <br>
 
             </form>
                 <button class="button button1" onclick="window.location.href='/database/table'">Back</button>

@@ -52,67 +52,51 @@
                     </div>
                     
                     <div class ="colum-4">
-                    <img border="0" alt="W3Schools" src="public/img/Main/paint.jpg" width="650" height="500">
+                    <img border="0" alt="W3Schools" src="/database/public/img/Main/paint.jpg" width="650" height="500">
                     </div>       
                 </div>
     </div>
-    <center>
+
+    <?php
+  $count = WasShowBy::find("Exhibitions_ex_id = '$id'");
+  $num = count($count);
+  ?>
+
+  <center>
     <div class="container">
+    <?php
+      $i = 0;
+      //print($count[0]->mater);
+       while($i<$num)
+       {
+    ?>
       <div class="row">
+        <?php
+        for($j=0;$j<4;$j++)
+        {
+          if($i>=$num){break;}
+          $art  = ArtObjects::findFirst([
+            'id_no = ?0',
+            'bind' => [
+                0 => $count[$i]->Art_Objects_id_no,
+            ]
+          ]);
+
+          $i++; 
+        ?>
         <div class="card-deck">
           <div class="card mb-3">
-            <img class="card-img-mid" src="img/David.jpg" alt="Card image cap" style="max-height: 18rem">
+            <img class="card-img-mid" src="\database\public\img\art_object\<?php if($art->image == NULL){echo "avatar.png";}else{echo $art->image;} ?>" alt="Card image cap" style="max-height: 18rem">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-          <div class="card mb-3">
-            <img class="card-img-mid" src="img/Feast of the rosary.jpg" alt="Card image cap" style="max-height: 18rem">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-          <div class="card mb-3">
-            <img class="card-img-mid" src="img/Feast of the rosary.jpg" alt="Card image cap" style="max-height: 18rem">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-          <div class="card mb-3">
-            <img class="card-img-mid" src="img/Feast of the rosary.jpg" alt="Card image cap" style="max-height: 18rem">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title"><?php echo $art->title; ?></h5>
             </div>
           </div>
         </div>
+        <?php } ?>
       </div>
-      <div class="row">
-        <div class="card-deck">
-          <div class="card mb-3">
-            <img class="card-img-mid" src="img/David.jpg" alt="Card image cap" style="max-height: 18rem">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-          <div class="card mb-3">
-            <img class="card-img-mid" src="img/Feast of the rosary.jpg" alt="Card image cap" style="max-height: 18rem">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-          <div class="card mb-3">
-            <img class="card-img-mid" src="img/Feast of the rosary.jpg" alt="Card image cap" style="max-height: 18rem">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-          <div class="card mb-3">
-            <img class="card-img-mid" src="img/Feast of the rosary.jpg" alt="Card image cap" style="max-height: 18rem">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php } ?>
+    </div>
   </center>
+
+  
 </body>

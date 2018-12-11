@@ -97,6 +97,8 @@
         <th>Detail</th>
         <th>Edit</th>
         <th>Delete</th>
+        <th>AddGoer</th>
+        <th>DelGoer</th>
       </tr>
       <tr>
         <?php 
@@ -117,6 +119,8 @@
         <td><button class="button button1" onclick="window.location.href='/database/exhibitions/detailexhibition/<?php echo $i;?>'">More</button></td>
         <td><button class="button button2" onclick="window.location.href='/database/exhibitions/edit/<?php echo $i;?>'">Edit</button></td>
         <td><button class="button button1" onclick="window.location.href='/database/exhibitions/delete/<?php echo $i;?>'">Delete</button></td>
+        <td><button class="button button2" onclick="window.location.href='/database/exhibitions/addGo/<?php echo $i;?>'">Add</button></td>
+        <td><button class="button button1" onclick="window.location.href='/database/exhibitions/deleteGo/<?php echo $i;?>'">Delete</button></td>
       </tr>
       <?php }?>
     </table>
