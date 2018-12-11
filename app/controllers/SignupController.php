@@ -13,7 +13,7 @@ class SignupController extends Controller
     {
         $user = new User();
         $user->role_id = $this->request->getPost("roleid");
-        $user->status = "off";
+        $user->status = "offline";
         // Store and check for errors
         $success = $user->save(
             $this->request->getPost(),
