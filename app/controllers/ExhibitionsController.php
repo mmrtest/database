@@ -9,5 +9,11 @@ class  ExhibitionsController extends Controller
         
         
     }
+    public function detailexhibitionAction()
+    {
+        
+        
+    }
+
 
 }
