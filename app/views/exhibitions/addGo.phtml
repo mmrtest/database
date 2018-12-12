@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <link rel="stylesheet" href="/database/public/css/addgo.css">
+</head>
+ 
+<body>
+    <br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 ">                
+            <table id="t01">
+      <tr>
+        <th>Goer_Id</th>
+        <th>Name</th> 
+      </tr>
+      <tr>
+        <?php 
+            $count = WasBookBy::find("Exhibitions_ex_id = '$id'");
+            $num = count($count);
+            for($i=0;$i<$num;$i++)
+           {
+            $art = MuseumGoer::findFirst([
+                        'goer_id = ?0',
+                        'bind' => [
+                            0 => $count[$i]->Museum_Goer_goer_id,
+                        ]
+                    ]);
+            if ($art === false) {$num++;continue;}
+        ?>
+        <td><?php echo $art->goer_id ; ?></td>
+        <td><?php echo $art->fname." ".$art->lname; ?></td>
+      </tr>
+      <?php }?>
+    </table>
+            </div>
+               
+            <div class="col-8 bg-light">
+            <form action="/database/exhibitions/addgosub/<?php echo $id; ?>" method="post" enctype="multipart/form-data">
+                <label for="fname">First Name</label><br>
+                <input type="text" name="fname" id="fname" placeholder="enter.."><br>
+                <label for="lname">Last Name</label><br>
+                <input type="text" name="lname" id="lname" placeholder="enter.."><br>
+                <label for="phone">Phone Number</label>
+                <input type="text" name="phone" id="phone" placeholder="enter.."><br>
+                <br>
+                <input type="submit" value="Submit"><br>
+                <br>
+
+            </form>
+                <button class="button button1" onclick="window.location.href='/database/table'">Back</button>
+            </div>
+            
+
+            </div>
+        </div>
+ 
+</body>
+ 
+</html>

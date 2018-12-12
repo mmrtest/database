@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Bootstrap tutorials by Siam HTML</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<body>
+  <br><br><br>
+  <img src="\database\public\img\Main\other.jpg" class="img-fluid mx-auto d-block" alt="Responsive image" width="900">
+  <p class="font-weight-bold">
+    <font size="36">
+      <center>Other</center>
+    </font>
+  </p>
+
+  <?php
+  $count = Other::find();
+  $num = count($count);
+  ?>
+
+  <center>
+    <div class="container">
+    <?php
+      $i = 0;
+      //print($count[0]->mater);
+       while($i<$num)
+       {
+    ?>
+      <div class="row">
+        <?php
+        for($j=0;$j<4;$j++)
+        {
+          if($i>=$num){break;}
+          $art  = ArtObjects::findFirst([
+            'id_no = ?0',
+            'bind' => [
+                0 => $count[$i]->Art_Objects_id_no,
+            ]
+          ]);
+
+          $i++; 
+        ?>
+        <div class="card-deck">
+          <div class="card mb-3">
+            <img class="card-img-mid" src="\database\public\img\art_object\<?php if($art->image == NULL){echo "avatar.png";}else{echo $art->image;} ?>" alt="Card image cap" style="max-height: 18rem">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $art->title; ?></h5>
+            </div>
+          </div>
+        </div>
+        <?php } ?>
+      </div>
+      <?php } ?>
+    </div>
+  </center>
+
+
+
+
+
+</body>

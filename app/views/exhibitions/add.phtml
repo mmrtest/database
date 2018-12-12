@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <link rel="stylesheet" href="/database/public/css/TableEdit.css">
+</head>
+ 
+<body>
+    <br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 ">                
+               
+            </div>
+               
+            <div class="col-8 bg-light">
+            <form action="/database/exhibitions/addsub" method="post" enctype="multipart/form-data">
+                <label for="exname">Exhibition Name</label><br>
+                <input type="text" name="exname" id="exname" placeholder="enter.."><br>
+                <label for="num">Number Of Max Visiter</label><br>
+                <input type="text" name="num" id="num" placeholder="enter.."><br>
+                <label for="datestr">Start_Date</label>
+                <input type="date" name="datestr" id="datestr">
+                <label for="dateend">End_Date</label>
+                <input type="date" name="dateend" id="dateend"><br>
+                <br>
+                <h3>Select image to upload:</h3>
+                <input type="file" name="fileToUpload" id="fileToUpload"> 
+
+                <select multiple="multiple" name="formats[]">
+                <?php
+                $count = ArtObjects::find();
+                $num = count($count);
+            
+                for($i=1;$i<=count($count);$i++)
+                {
+                    $art = ArtObjects::findFirst([
+                        'id_no = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+                    if ($art === false) {$num++;continue;}
+                ?>
+                    <option value="<?php echo $art->id_no;?>"><?php echo $art->id_no." - ".$art->title;?></option> 
+                <?php
+                }
+                ?>
+                </select> 
+
+                <input type="submit" value="Submit"><br>
+                <br>
+
+            </form>
+                <button class="button button1" onclick="window.location.href='/database/table'">Back</button>
+            </div>
+            
+
+            </div>
+        </div>
+ 
+</body>
+ 
+</html>

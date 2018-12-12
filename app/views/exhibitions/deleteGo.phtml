@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <link rel="stylesheet" href="/database/public/css/addgo.css">
+</head>
+ 
+<body>
+    <br><br><br><br><br>
+    <center>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 ">                
+            <table id="t01">
+      <tr>
+        <th>Goer_Id</th>
+        <th>Name</th> 
+        <th>Delete</th>
+      </tr>
+      <tr>
+        <?php 
+            $count = WasBookBy::find("Exhibitions_ex_id = '$id'");
+            $num = count($count);
+            for($i=0;$i<$num;$i++)
+           {
+            $art = MuseumGoer::findFirst([
+                        'goer_id = ?0',
+                        'bind' => [
+                            0 => $count[$i]->Museum_Goer_goer_id,
+                        ]
+                    ]);
+            if ($art === false) {$num++;continue;}
+        ?>
+        <td><?php echo $art->goer_id ; ?></td>
+        <td><?php echo $art->fname." ".$art->lname; ?></td>
+        <td><button class="button button1" onclick="window.location.href='/database/exhibitions/deletegosub/<?php echo $id;?>/<?php echo $art->goer_id;?>'">Delete</button></td>
+      </tr>
+      <?php }?>
+    </table>
+    </div>
+    </div>
+    </div>
+    </center>
+    <button class="button button1" onclick="window.location.href='/database/table'">Back</button>
+
+ 
+</body>
+ 
+</html>

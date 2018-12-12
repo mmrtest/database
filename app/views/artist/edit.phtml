@@ -33,7 +33,9 @@
                 <select name="country" id="country">
                 <?php 
                 $count = Country::find();
-                for($i=1;$i<=count($count);$i++)
+                $num = count($count);
+            
+                for($i=1;$i<=$num;$i++)
                 {
                     $art = Country::findFirst([
                         'country_id = ?0',
@@ -41,6 +43,7 @@
                             0 => $i,
                         ]
                     ]);
+                    if ($art === false) {$num++;continue;}
                 ?>
                     <option value="<?php echo $art->country_id;?>" <?php if($country == $art->country_title){echo "selected";}?>><?php echo $art->country_id." - ".$art->country_title;?></option> 
                 <?php
@@ -52,7 +55,9 @@
                 <select name="epoch" id="epoch">
                 <?php 
                 $count2 = Epoch::find();
-                for($i=1;$i<=count($count2);$i++)
+                $num = count($count2);
+            
+                for($i=1;$i<=$num;$i++)
                 {
                     $art = Epoch::findFirst([
                         'epoch_id = ?0',
@@ -60,6 +65,7 @@
                             0 => $i,
                         ]
                     ]);
+                    if ($art === false) {$num++;continue;}
                 ?>
                     <option value="<?php echo $art->epoch_id;?>" <?php if($epoch == $art->epoch_title){echo "selected";}?>><?php echo $art->epoch_id." - ".$art->epoch_title;?></option>   
                 <?php
