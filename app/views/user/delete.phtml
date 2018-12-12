@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+</body>
+
+<?php 
+    if(session_status() == 1){
+    session_start();}
+    $user_id = $_SESSION['user_id'];
+        if ($id == $user_id) {
+            ?>
+            <script>
+                    alert("You Can't Delete Youeself");
+                    window.location = "../../table";
+            </script>
+            <?php
+        }else{
+        $this->response->redirect('user/deletesub/'.$id);
+        }
+?>

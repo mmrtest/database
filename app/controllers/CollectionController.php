@@ -106,6 +106,11 @@ class CollectionController extends ControllerBase
 
     public function deleteAction($id)
     {
+        $this->view->setVar('id', $id);
+    }
+
+    public function deletesubAction($id)
+    {
         $co  = Collections::findFirst([
             'Collections_id = ?0',
             'bind' => [
