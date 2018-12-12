@@ -1,7 +1,7 @@
 
 .container li
 {
-    background-color: rgb(154, 156, 158)
+    background-color: rgb(88, 93, 97)
    
 }
 .nav-item a{
@@ -25,8 +25,8 @@ img{
 }
 .content{
     position:absolute;
-    left:1400px;
-    top:800px;
+    left:800px;
+    top:460px;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
     text-transform: uppercase;
@@ -38,7 +38,7 @@ img{
 .content a{
     position: relative;
     
-    font-size: 30px;
+    font-size: 15px;
     display: block;
     background-color:silver;
     text-align: center;
@@ -57,12 +57,5 @@ img{
 }
 body
 {
-    background-color: rgb(213, 214, 206);
-    
-}
-.w3-section{
-    color : rgb(22, 22, 22)
-}
-h2{
-    color : rgb(36, 35, 35)
+    color: rgb(133, 109, 75)
 }
