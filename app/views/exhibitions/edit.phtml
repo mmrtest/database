@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <link rel="stylesheet" href="/database/public/css/TableEdit.css">
+</head>
+ 
+<body>
+    <br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 ">                
+                <br> <img class="img-fluid" src="../../public/img/exhibitions/<?php echo $image;?>" alt="Chania">
+            </div>
+               
+            <div class="col-8 bg-light">
+            <form action="/database/exhibitions/submit/<?php echo $id;?>" method="post" enctype="multipart/form-data">
+                <label for="exname">Exhibition Name</label><br>
+                <input type="text" name="exname" id="exname" value="<?php echo $exname;?>"><br>
+                <label for="num">Number Of Max Visiter</label><br>
+                <input type="text" name="num" id="num" value="<?php echo $num;?>"><br>
+                <label for="datestr">Start_Date</label>
+                <input type="date" name="datestr" id="datestr" value="<?php echo $datestr;?>">
+                <label for="dateend">End_Date</label>
+                <input type="date" name="dateend" id="dateend" value="<?php echo $dateend;?>"><br>
+                <br>
+                <h3>Select image to upload:</h3>
+                <input type="file" name="fileToUpload" id="fileToUpload"> 
+
+                <select multiple="multiple" name="formats[]">
+                <?php
+                $count = ArtObjects::find();
+                $num = count($count);
+            
+                for($i=1;$i<=$num;$i++)
+                {
+                    $art = ArtObjects::findFirst([
+                        'id_no = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+                    if ($art === false) {$num++;continue;}
+                    $checkSelected = false;
+                    for($j=0;$j<count($wsb);$j++)
+                    {
+                        if($wsb[$j]->Art_Objects_id_no == $art->id_no){$checkSelected = true;}
+                    }
+
+                ?>
+                    <---<option value="<?php echo $art->id_no;?>" <?php if($checkSelected == true){echo "selected";}?>><?php echo $art->id_no." - ".$art->title;?></option> 
+                <?php
+                }
+                ?>
+                </select> 
+
+                <input type="submit" value="Submit"><br>
+                <br>
+
+            </form>
+                <button class="button button1" onclick="window.location.href='/database/table'">Back</button>
+            </div>
+            
+
+            </div>
+        </div>
+ 
+</body>
+ 
+</html>

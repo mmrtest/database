@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <link rel="stylesheet" href="/database/public/css/TableEdit.css">
+</head>
+ 
+<body>
+    <br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 ">                
+               
+            </div>
+               
+            <div class="col-8 bg-light">
+            <form action="/database/collection/addsub" method="post" enctype="multipart/form-data">
+                <label for="coname">Collection Name</label><br>
+                <input type="text" name="coname" id="coname" placeholder="enter.."><br>
+                <label for="type">Type</label><br>
+                <input type="text" name="type" id="type" placeholder="enter.."><br>
+                <label for="des">Description</label><br>
+                <input type="text" name="des" id="des" placeholder="enter.."><br>
+                <label for="addr">Address</label><br>
+                <input type="text" name="addr" id="addr" placeholder="enter.."><br>
+                <label for="phone">Phone</label><br>
+                <input type="text" name="phone" id="phone" placeholder="enter.."><br>
+                <label for="cont">Contact</label><br>
+                <input type="text" name="cont" id="cont" placeholder="enter.."><br>
+                <br>
+                <input type="submit" value="Submit"><br>
+                <br>
+
+            </form>
+                <button class="button button1" onclick="window.location.href='/database/table'">Back</button>
+            </div>
+            
+
+            </div>
+        </div>
+ 
+</body>
+ 
+</html>
