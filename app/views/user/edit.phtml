@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <link rel="stylesheet" href="/database/public/css/TableEdit.css">
+</head>
+ 
+<body>
+    <br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 bg-light">
+            <form action="../submit/<?php echo $id;?>" method="post" enctype="multipart/form-data">
+                <label for="name">Username</label><br>
+                <input type="text" name="name" id="name" value="<?php echo $name;?>"><br>               
+                <label for="pass">Password</label><br>
+                <input type="text" name="pass" id="pass" value="<?php echo $pass;?>"><br>
+                <label for="mail">E-mail</label><br>
+                <input type="email" name="mail" id="mail" value="<?php echo $mail;?>"><br><br>             
+                <label for="role">Role</label><br>
+                <select name="role" id="role">
+                <?php 
+                $count = Role::find();
+                $num = count($count);
+            
+                for($i=0;$i<$num;$i++)
+                {
+                    $art = Role::findFirst([
+                        'idrole = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+                    if ($art === false) {$num++;continue;}
+                ?>
+                    <option value="<?php echo $art->idrole;?>" <?php if($role_id == $art->idrole){echo "selected";}?>><?php echo $art->idrole." - ".$art->rolename;?></option> 
+                <?php
+                }
+                ?>                            
+
+                <input type="submit" value="Submit">
+                </form>
+                <button class="button button1" onclick="window.location.href='/database/table'">Back</button>
+            </div>
+            
+
+            </div>
+        </div>
+ 
+</body>
+ 
+</html>

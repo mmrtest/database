@@ -12,7 +12,7 @@ class SignupController extends Controller
     public function registerAction()
     {
         $user = new User();
-        $user->role_id = $this->request->getPost("roleid");
+        $user->role_id = 0;
         $user->status = "offline";
         // Store and check for errors
         $success = $user->save(

@@ -27,6 +27,9 @@ class LoginController extends Controller
                 session_start();
                 $_SESSION['user_id'] = $user->user_id;
                 $_SESSION['username'] = $user->username;
+                $_SESSION['role_id'] = $user->role_id;
+                $user->status = "online";
+                $user->save();
                 $this->response->redirect('table');
                 //$this->flash->error("success");
             }

@@ -207,6 +207,11 @@ class  ExhibitionsController extends Controller
     }
 
     public function deleteAction($id)
+    {
+        $this->view->setVar('id', $id);
+    }
+
+    public function deletesubAction($id)
     { 
     $ex  = Exhibitions::findFirst([
         'ex_id = ?0',
