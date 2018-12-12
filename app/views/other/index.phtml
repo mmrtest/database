@@ -50,7 +50,7 @@
               $i++; 
             ?>
           <div class="card mb-3" style="max-width: 16rem">
-          <a href = "index" class="btn">
+          <a href = "/database/art/detail/<?php echo $count[$i-1]->Art_Objects_id_no;?>" class="btn">
             <img class="card-img-mid" src="\database\public\img\art_object\<?php if($art->image == NULL){echo "avatar.png";}else{echo $art->image;} ?>" alt="Card image cap" style="max-height: 18rem">
                 </a>
             <div class="card-body">

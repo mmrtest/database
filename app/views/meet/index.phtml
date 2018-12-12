@@ -51,7 +51,7 @@
         ?>
         
           <div class="card mb-3" style="max-width: 16rem">
-          <a href = "index" class="btn" >
+          <a href = "/database/artist/detail/<?php echo $count[$i-1]->artist_id;?>" class="btn" >
             <img class="card-img-mid" src="\database\public\img\art_object\<?php if($art->image == NULL){echo "avatar.png";}else{echo $art->image;} ?>" alt="Card image cap" style=" max-height: 18rem">
             <div class="card-body">
               <h5 class="card-title" ><?php echo $art->firstname." ".$art->midname." " .$art->lastname; ?></h5>
