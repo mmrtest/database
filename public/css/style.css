@@ -1,34 +1,45 @@
 li
 {
-    background-color: rgb(88, 93, 97)
+    background-color: rgb(12, 128, 243)
    
 }
 a{
     color: rgb(216, 209, 199);
+    
 }
 h2
 {
     position: relative;
     bottom: -45px;
+    right : -400px;
     font-style: italic;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bolder
    
  
 }
 h1{
-    font-size: 73px;
+    font-size: 80px;
     position: relative;
     top : 20px;
+    right: -400px;
 }
 p{
     position: relative;
-    right: -60px;
-    bottom: -30px;
+    right: -450px;
+    bottom: -15px;
+    font-size: 22px;
+
 }
 s{
     position: relative;
-    right: -120px;
-    bottom: -10px;
+    right: -630px;
+    bottom: -30px;
+}
+b{
+    font-size: 30px ;
+    position: relative;
+    right: -595px;
+    bottom: +20px;
 }
 
