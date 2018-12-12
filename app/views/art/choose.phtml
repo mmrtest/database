@@ -4,6 +4,27 @@
         <meta charset="utf-8">
 
     </head>
+
+    <?php 
+    if(session_status() == 1){
+    session_start();}
+    $role_id = $_SESSION['role_id'];
+    $rol  = Permission::findFirst([
+            'role_id = ?0 AND permission_id = ?1',
+            'bind' => [
+                0 => $role_id,
+                1 => 2,
+            ]
+        ]);
+        if ($rol === false) {
+            ?>
+          <script>
+                    alert("You Haven't Permission to do this");
+                    window.location = "../table";
+            </script>
+            <?php
+        }
+    ?>
  
     <body id="page-top" >
 

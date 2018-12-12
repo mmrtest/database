@@ -627,8 +627,11 @@ class ArtController extends Controller
 
     public function deleteAction($id)
     {
-        
+        $this->view->setVar('id', $id);
+    }
 
+    public function deletesubAction($id)
+    {
         $art  = Painting::findFirst([
             'Art_Objects_id_no = ?0',
             'bind' => [
@@ -768,7 +771,6 @@ class ArtController extends Controller
             }
         }
         $this->response->redirect('table');
-        
     }
 
 }

@@ -1,6 +1,9 @@
 <?php
-    session_start();
+
+    if(session_status() == 1){
+    session_start();}
     $_SESSION['user_id'];
+    if($_SESSION['user_id'] === false){$_SESSION['user_id'] = NULL;}
 ?>
 
 <!DOCTYPE html>
