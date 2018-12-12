@@ -25,8 +25,8 @@ img{
 }
 .content{
     position:absolute;
-    left:800px;
-    top:460px;
+    left:1400px;
+    top:800px;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
     text-transform: uppercase;
@@ -38,7 +38,7 @@ img{
 .content a{
     position: relative;
     
-    font-size: 15px;
+    font-size: 30px;
     display: block;
     background-color:silver;
     text-align: center;
@@ -57,5 +57,7 @@ img{
 }
 body
 {
+    background-image : url("public/img/Main/2144.jpg");
     color: rgb(133, 109, 75)
+    
 }
