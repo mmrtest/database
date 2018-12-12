@@ -50,8 +50,9 @@
               $i++; 
             ?>
           <div class="card mb-3" style="max-width: 16rem">
+          <a href = "index" class="btn">
             <img class="card-img-mid" src="\database\public\img\art_object\<?php if($art->image == NULL){echo "avatar.png";}else{echo $art->image;} ?>" alt="Card image cap" style="max-height: 18rem">
-            
+                </a>
             <div class="card-body">
               <h5 class="card-title"><?php echo $art->title; ?></h5>
             </div>

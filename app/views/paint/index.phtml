@@ -14,20 +14,21 @@
 
 <body>
   <br><br><br>
-  <img src="\database\public\img\Main\sculptures.jpg" class="img-fluid mx-auto d-block" alt="Responsive image" width="900">
+  <img src="\database\public\img\Main\painting.jpg" class="img-fluid mx-auto d-block" alt="Responsive image" width="900">
   <p class="font-weight-bold">
     <font size="36">
-      <center>Paint</center>
+      <center>Painting</center>
     </font>
   </p>
 
   <?php
-  $count = Sculpture::find();
+  $count = Painting::find();
   $num = count($count);
   ?>
 
   <center>
     <div class="container">
+   
     <?php
       $i = 0;
       //print($count[0]->mater);
@@ -35,7 +36,7 @@
        {
     ?>
       <div class="row">
-        <div class="card-deck">
+      <div class="card-deck">
         <?php
         for($j=0;$j<4;$j++)
         {
@@ -48,14 +49,18 @@
           ]);
 
           $i++; 
-        ?>        
-          <div class="card mb-3 " style="max-width: 16rem">
-            <img class="card-img-mid" src="\database\public\img\art_object\<?php if($art->image == NULL){echo "avatar.png";}else{echo $art->image;} ?>" alt="Card image cap" style="  max-height: 18rem">
+        ?>
+        
+          <div class="card mb-3"  style="max-width: 16rem" >
+          <a href = "index" class="btn">
+            <img class="card-img-mid" src="\database\public\img\art_object\<?php if($art->image == NULL){echo "avatar.png";}else{echo $art->image;} ?>" alt="Card image cap" style="max-height: 18rem">
+            </a>
             <div class="card-body">
               <h5 class="card-title"><?php echo $art->title; ?></h5>
             </div>
-            </a>
+            
           </div>
+        
         <?php } ?>
         </div>
       </div>
