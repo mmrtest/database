@@ -208,136 +208,20 @@ class ArtistController extends Controller
         ]);
         for($i=0;$i<count($count);$i++)
         {
-            $art  = Painting::findFirst([
-                'Art_Objects_id_no = ?0',
-                'bind' => [
-                    0 => $count[$i]->id_no,
-                ]
-            ]);
-            if ($art !== false) {
-                if ($art->delete() === false) {
-                    echo "Sorry, we can't delete\n";
-            
-                    $messages = $art->getMessages();
-            
-                    foreach ($messages as $message) {
-                        echo $message, "\n";
-                    }
-                } else {
-                    echo 'Deleted successfully!';
-                }
+            $count[$i]->artist_id = NULL;
+            $success = $count[$i]->update();
+
+        if ($success) {
+            echo "Thanks for updating!";
+        } else {
+            echo "Sorry, the following problems were generated: ";
+
+            $messages = $count[$i]->getMessages();
+
+            foreach ($messages as $message) {
+                echo $message->getMessage(), "<br/>";
             }
-    
-            $art  = Sculpture::findFirst([
-                'Art_Objects_id_no = ?0',
-                'bind' => [
-                    0 => $count[$i]->id_no,
-                ]
-            ]);
-            if ($art !== false) {
-                if ($art->delete() === false) {
-                    echo "Sorry, we can't delete\n";
-            
-                    $messages = $art->getMessages();
-            
-                    foreach ($messages as $message) {
-                        echo $message, "\n";
-                    }
-                } else {
-                    echo 'Deleted successfully!';
-                }
-            }
-    
-            $art  = Statue::findFirst([
-                'Art_Objects_id_no = ?0',
-                'bind' => [
-                    0 => $count[$i]->id_no,
-                ]
-            ]);
-            if ($art !== false) {
-                if ($art->delete() === false) {
-                    echo "Sorry, we can't delete\n";
-            
-                    $messages = $art->getMessages();
-            
-                    foreach ($messages as $message) {
-                        echo $message, "\n";
-                    }
-                } else {
-                    echo 'Deleted successfully!';
-                }
-            }
-    
-            $art  = Other::findFirst([
-                'Art_Objects_id_no = ?0',
-                'bind' => [
-                    0 => $count[$i]->id_no,
-                ]
-            ]);
-            if ($art !== false) {
-                if ($art->delete() === false) {
-                    echo "Sorry, we can't delete\n";
-            
-                    $messages = $art->getMessages();
-            
-                    foreach ($messages as $message) {
-                        echo $message, "\n";
-                    }
-                } else {
-                    echo 'Deleted successfully!';
-                }
-            }
-    
-            $art  = Borrow::findFirst([
-                'Art_Objects_id_no = ?0',
-                'bind' => [
-                    0 => $count[$i]->id_no,
-                ]
-            ]);
-            if ($art !== false) {
-                if ($art->delete() === false) {
-                    echo "Sorry, we can't delete\n";
-            
-                    $messages = $art->getMessages();
-            
-                    foreach ($messages as $message) {
-                        echo $message, "\n";
-                    }
-                } else {
-                    echo 'Deleted successfully!';
-                }
-            }
-    
-            $art  = PermanentCollections::findFirst([
-                'Art_Objects_id_no = ?0',
-                'bind' => [
-                    0 => $count[$i]->id_no,
-                ]
-            ]);
-            if ($art !== false) {
-                if ($art->delete() === false) {
-                    echo "Sorry, we can't delete\n";
-            
-                    $messages = $art->getMessages();
-            
-                    foreach ($messages as $message) {
-                        echo $message, "\n";
-                    }
-                } else {
-                    echo 'Deleted successfully!';
-                }
-            }
-            if ($count[$i]->delete() === false) {
-                echo "Sorry, we can't delete\n";
-        
-                $messages = $count[$i]->getMessages();
-        
-                foreach ($messages as $message) {
-                    echo $message, "\n";
-                }
-            } else {
-                echo 'Deleted successfully!';
-            }$i++;
+        }
 
         }
 

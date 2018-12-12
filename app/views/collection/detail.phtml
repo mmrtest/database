@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <link rel="stylesheet" href="/database/public/css/addgo.css">
+</head>
+ 
+<body>
+    <br><br><br><br><br>
+    <center>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 ">
+            <h1>Collection : <?php echo $coname; ?></h1>                
+            <table id="t01">
+      <tr>
+        <th>Id_no</th>
+        <th>Name</th> 
+      </tr>
+      <tr>
+        <?php 
+            $count = Borrow::find("collections_id = '$id'");
+            $num = count($count);
+            for($i=0;$i<$num;$i++)
+           {
+            $art = ArtObjects::findFirst([
+                        'id_no = ?0',
+                        'bind' => [
+                            0 => $count[$i]->Art_Objects_id_no,
+                        ]
+                    ]);
+            if ($art === false) {$num++;continue;}
+        ?>
+        <td><?php echo $art->id_no ; ?></td>
+        <td><?php echo $art->title; ?></td>
+      </tr>
+      <?php }?>
+    </table>
+    </div>
+    </div>
+    </div>
+    </center>
+    <button class="button button1" onclick="window.location.href='/database/table'">Back</button>
+
+ 
+</body>
+ 
+</html>

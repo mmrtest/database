@@ -15,6 +15,7 @@
   <button class="tablinks" onclick="openCity(event, 'table1')">Art Object</button>
   <button class="tablinks" onclick="openCity(event, 'table2')">Artist</button>
   <button class="tablinks" onclick="openCity(event, 'table3')">Exhibition</button>
+  <button class="tablinks" onclick="openCity(event, 'table4')">Collection</button>
 </div>
 
 <div id="table1" class="tabcontent" style="display: none;">
@@ -121,6 +122,40 @@
         <td><button class="button button1" onclick="window.location.href='/database/exhibitions/delete/<?php echo $i;?>'">Delete</button></td>
         <td><button class="button button2" onclick="window.location.href='/database/exhibitions/addGo/<?php echo $i;?>'">Add</button></td>
         <td><button class="button button1" onclick="window.location.href='/database/exhibitions/deleteGo/<?php echo $i;?>'">Delete</button></td>
+      </tr>
+      <?php }?>
+    </table>
+</div>
+
+<div id="table4" class="tabcontent" style="display: none;">
+<button class="button button1" onclick="window.location.href='/database/collection/add'">ADD</button>
+<table id="t01">
+      <tr>
+        <th>Collection_Id</th>
+        <th>Name</th> 
+        <th>Detail</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <tr>
+        <?php 
+            $count = Collections::find();
+            $num = count($count);
+            for($i=1;$i<=$num;$i++)
+           {
+            $art = Collections::findFirst([
+                        'Collections_id = ?0',
+                        'bind' => [
+                            0 => $i,
+                        ]
+                    ]);
+            if ($art === false) {$num++;continue;}
+        ?>
+        <td><?php echo $art->Collections_id ; ?></td>
+        <td><?php echo $art->name; ?></td>
+        <td><button class="button button1" onclick="window.location.href='/database/collection/detail/<?php echo $i;?>'">More</button></td>
+        <td><button class="button button2" onclick="window.location.href='/database/collection/edit/<?php echo $i;?>'">Edit</button></td>
+        <td><button class="button button1" onclick="window.location.href='/database/collection/delete/<?php echo $i;?>'">Delete</button></td>
       </tr>
       <?php }?>
     </table>
