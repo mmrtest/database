@@ -57,7 +57,12 @@ img{
 }
 body
 {
-    background-image : url("public/img/Main/2144.jpg");
-    color: rgb(133, 109, 75)
+    background-color: rgb(213, 214, 206);
     
+}
+.w3-section{
+    color : rgb(22, 22, 22)
+}
+h2{
+    color : rgb(36, 35, 35)
 }
