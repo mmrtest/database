@@ -14,7 +14,7 @@
 
 <body>
   <br><br><br>
-  <img src="\database\public\img\Main\meet.jpg" class="img-fluid mx-auto d-block" alt="Responsive image" width="900">
+  <img src="\database\public\img\Main\meets.jpg" class="img-fluid mx-auto d-block" alt="Responsive image" width="900">
   <p class="font-weight-bold">
     <font size="36">
       <center>Meet The Artist</center>
@@ -50,10 +50,12 @@
         ?>
         <div class="card-deck">
           <div class="card mb-3">
+          <a href = "index" class="btn">
             <img class="card-img-mid" src="\database\public\img\art_object\<?php if($art->image == NULL){echo "avatar.png";}else{echo $art->image;} ?>" alt="Card image cap" style="max-height: 18rem">
             <div class="card-body">
               <h5 class="card-title"><?php echo $art->firstname." ".$art->midname." " .$art->lastname; ?></h5>
             </div>
+            </a>
           </div>
         </div>
         <?php } ?>
